@@ -41,11 +41,48 @@ public class BookController {
 
     @GetMapping("/book/{id}")
     public String bookDetails(@PathVariable(value = "id") long id, Model model){
+        if (!bookRepository.existsById(id)){
+            return "redirect:/book";
+        }
+
         Optional<Book> book = bookRepository.findById(id);
         ArrayList<Book> res =new ArrayList<>();
         book.ifPresent(res::add);
         model.addAttribute("book", res);
         return "book-details";
+    }
+
+    @GetMapping("/book/{id}/edit")
+    public String bookEdit(@PathVariable(value = "id") long id, Model model){
+        if (!bookRepository.existsById(id)){
+            return "redirect:/book";
+        }
+
+        Optional<Book> book = bookRepository.findById(id);
+        ArrayList<Book> res =new ArrayList<>();
+        book.ifPresent(res::add);
+        model.addAttribute("book", res);
+        return "book-edit";
+    }
+
+    @PostMapping("/book/{id}/edit")
+    public String bookUpdate(@PathVariable(value = "id") long id,
+                             @RequestParam String title,@RequestParam String description,
+                              @RequestParam String binding, @RequestParam String subject, Model model){
+        Book book = bookRepository.findById(id).orElseThrow();
+        book.setTitle(title);
+        book.setDescription(description);
+        book.setBinding(binding);
+        book.setSubject(subject);
+        bookRepository.save(book);
+        return "redirect:/book";
+    }
+
+    @PostMapping("/book/{id}/remove")
+    public String bookDelete(@PathVariable(value = "id") long id, Model model){
+        Book book = bookRepository.findById(id).orElseThrow();
+        bookRepository.delete(book);
+        return "redirect:/book";
     }
 
 }

@@ -16,9 +16,12 @@
             <h1 th:text="${el.title}" class="card-title"></h1>
             <p th:text="${el.description}" class="card-text"></p>
             <b>Переплет:</b> <p th:text="${el.binding}" class="card-text"></p>
-            <b>Тематика: </b><p th:text="${el.subject}" class="card-text"></p>
-            <a th:href="'/book/' + ${id} +'/edit'" class="card-link">Редактировать</a> <br>
-            <a th:href="'/book/' + ${id} +'/remove'" class="card-link">Удалить</a> <br>
+            <b>Тематика: </b><p th:text="${el.subject}" class="card-text"></p>  <br><br>
+            <a th:href="'/book/' + ${id} +'/edit'" class="btn btn-primary">Редактировать</a><br><br>
+            <form th:action="'/book/' + ${id} +'/remove'" method="post">
+                <button type="submit" class="btn btn-primary">Удалить</button>
+            </form>
+         <!--   <a th:href="'/book/' + ${id} +'/remove'" class="card-link">Удалить</a> <br> -->
         </div>
     </div>
 </main>
