@@ -51,7 +51,18 @@ public class Book {
     public void setSubject(String subject) {
         this.subject = subject;
     }
-/*
+
+    public Book(String title, String description, String binding, String subject) {
+        this.title = title;
+        this.description = description;
+        this.binding = binding;
+        this.subject = subject;
+    }
+
+    public Book(){}
+
+
+    /*
     private enum binding {
         SOFT,
         SOLID
