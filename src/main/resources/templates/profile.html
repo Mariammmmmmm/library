@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${title}"></title>
@@ -11,16 +10,42 @@
 <header th:insert="blocks/header :: header"></header>
 
 <main class="container">
-    <h1>Книги</h1>
-    <div th:each="el : ${books}" class="card">
-        <div class="card-body">
-        <h4 th:text="${el.title}" class="card-title"/>
-        <p th:text="${el.description}" class="card-text"/>
-        <a th:href="'/book/' + ${el.id}" class="card-link">Подробнее...</a> <br>
-        </div>
-    </div> <br>
+
+    <table class="table">
+      <tbody>
+
+        <tr>
+            <th scope="row">Имя</th>
+            <td>Иван</td>
+        </tr>
+        <tr>
+            <th scope="row">Фамилия</th>
+            <td>Иванов</td>
+        </tr>
+        <tr>
+          <th scope="row">Логин</th>
+          <td>user1</td>
+        </tr>
+        <tr>
+          <th scope="row">E-mail</th>
+          <td>user1@mail.com</td>
+        </tr>
+        <tr>
+          <th scope="row">Номер телефона</th>
+          <td>111111111111</td>
+        </tr>
+        <tr>
+          <th scope="row">Адрес</th>
+          <td>г.Санкт-Петербург ул. Абв </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href=" '/book' " class="btn btn-primary">Посмотреть мои книги</a>
     <a th:href="'/book/' +'add'" class="btn btn-primary">Добавить книгу</a>
-</main> <br>
+
+
+</main>
 
 <div th:insert="blocks/footer :: footer"></div>
 

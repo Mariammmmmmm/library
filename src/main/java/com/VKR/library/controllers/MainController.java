@@ -44,6 +44,11 @@ public class MainController {
         return "scientific";
     }
 
+    @GetMapping("/profile")
+    public String profile(Model model) {
+        model.addAttribute("title", "Личный кабинет");
+        return "profile";
+    }
 
 
 }

@@ -10,7 +10,17 @@
 
 <header th:insert="blocks/header :: header"></header>
 
-<div th:insert="blocks/books :: books"></div>
+<main class="container">
+    <h1>Книги</h1>
+    <div th:each="el : ${books}" class="card">
+        <div class="card-body">
+            <h4 th:text="${el.title}" class="card-title"/>
+            <p th:text="${el.description}" class="card-text"/>
+            <a th:href="'/book/' + ${el.id}" class="card-link">Подробнее...</a> <br>
+        </div>
+    </div> <br>
+
+</main> <br>
 
 <div th:insert="blocks/footer :: footer"></div>
 
